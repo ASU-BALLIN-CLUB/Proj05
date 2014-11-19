@@ -32,7 +32,7 @@ void uc_led_all_on()
 void uc_led_init()
 {
 	 gpio_port_init(gpio_port_tc , gpio_pin_0, gpio_funct_gpio, gpio_data_dir_out, gpio_pin_state_low);
-	 gpio_port_init(gpio_port_tc , gpio_pin_1, gpio_funct_gpio, gpio_data_dir_out, gpio_pin_state_low);
+	 //gpio_port_init(gpio_port_tc , gpio_pin_1, gpio_funct_gpio, gpio_data_dir_out, gpio_pin_state_low);
 	 gpio_port_init(gpio_port_tc , gpio_pin_2, gpio_funct_gpio, gpio_data_dir_out, gpio_pin_state_low);
 	 gpio_port_init(gpio_port_tc , gpio_pin_3, gpio_funct_gpio, gpio_data_dir_out, gpio_pin_state_low);
 }
