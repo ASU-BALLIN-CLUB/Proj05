@@ -25,11 +25,17 @@ typedef enum {
 	xfer_mode = 2
 } mode_t;
 
+typedef enum {
+	pause_music = 0,
+	play_music = 1
+} play_t;
+
 static void hw_init();
 static void pushb_1_callback();
 static void pushb_2_callback();
 static void run();
 static mode_t mode = idle_mode;
+static play_t status = pause_mode;
 
 static void hw_init()
 {
@@ -37,7 +43,6 @@ static void hw_init()
 	uc_led_init();
 	uc_pushb_init(uc_pushb_1, pushb_1_callback);
 	uc_pushb_init(uc_pushb_2, pushb_2_callback);
-
 	int_uninhibit_all();
 }
 
@@ -46,12 +51,25 @@ static void pushb_1_callback()
 	if (mode == idle_mode)
 	{
 		mode = play_mode;
+		status = play_music;
 		//uc_led_on((gpio_pin_t)uc_led_2);
 		//led--;
 	}
 	else
 	{
-		mode = idle_mode;
+		if(mode == play_mode)
+		{
+			if(status == play_music)
+			{
+				status = pause_music;
+				oct_sound_stop(pwm_channel_2);
+			}
+			else
+			{
+				status = play_music;
+				oct_sound_start(pwm_channel_t const channel, uint8 const per, uint8 const duty);
+			}
+		}
 		//uc_led_off((gpio_pin_t)uc_led_1);
 		//led++;
 	}
