@@ -75,17 +75,22 @@ static void pushb_2_callback()
 
 static void run()
 {
-	if(mode == idle_mode)
+	while(1)
 	{
+		if(mode == idle_mode)
+		{
+			uc_led_all_off();
 
 
-	}
-	else if(mode == play_mode)
-	{
 
-	}
-	else
-	{
-
+		}
+		else if(mode == play_mode)
+		{
+			//starts play mode here
+		}
+		else
+		{
+			//starts xfer mode here
+		}
 	}
 }
